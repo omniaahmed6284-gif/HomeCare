@@ -36,7 +36,7 @@ extension BookingStatusX on BookingStatus {
 }
 
 class BookingModel {
-  final String id;
+  final String bookingId;
   final String customerId;
   final String providerId;
   final DateTime date;
@@ -52,7 +52,7 @@ class BookingModel {
   final DateTime? createdAt;
 
   BookingModel({
-    this.id = '',
+    this.bookingId = '',
     required this.customerId,
     required this.providerId,
     required this.date,
@@ -70,7 +70,7 @@ class BookingModel {
 
   factory BookingModel.fromJson(String id, Map<String, dynamic> json) {
     return BookingModel(
-      id: id,
+      bookingId: json ['bookingId'] ?? '',
       customerId: json['customerId'] ?? '',
       providerId: json['providerId'] ?? '',
       date: (json['date'] as Timestamp).toDate(),
