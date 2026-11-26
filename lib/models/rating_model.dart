@@ -30,10 +30,10 @@ class RatingModel {
             : comment.trim();
   String? validate() {
     if (bookingId.isEmpty || customerId.isEmpty || providerId.isEmpty) {
-      return 'بيانات التقييم ناقصة';
+      return 'يوجد نقص في بيانات التقيم';
     }
     if (rating < minRating || rating > maxRating) {
-      return 'التقييم لازم يكون من 1 لـ 5';
+      return 'حدث خطأ,التقييم من 1 لـ 5';
     }
     return null;
   }
