@@ -13,7 +13,7 @@ class ServiceModel {
     required this.description,
 });
 
-  Map<String, dynamic> toJson(){
+  Map<String, dynamic> toMap(){
     return {
       'serviceId': serviceId,
       'name': name,
@@ -23,13 +23,13 @@ class ServiceModel {
     };
   }
 
-  factory ServiceModel.fromJson(Map<String, dynamic> json){
+  factory ServiceModel.fromMap(Map<String, dynamic> map){
     return ServiceModel(
-      serviceId: json['serviceId'] ?? '',
-      name: json['name'] ?? '',
-      icon: json['icon'] ?? '',
-      image: json['image'] ?? '',
-      description: json['description'] ?? '',
+      serviceId: map['serviceId'] ?? '',
+      name: map['name'] ?? '',
+      icon: map['icon'] ?? '',
+      image: map['image'] ?? '',
+      description: map['description'] ?? '',
     );
   }
 }

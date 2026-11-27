@@ -68,27 +68,27 @@ class BookingModel {
 
   String get formattedDate => '${date.year}/${date.month}/${date.day}';
 
-  factory BookingModel.fromJson(String id, Map<String, dynamic> json) {
+  factory BookingModel.fromJMap(String id, Map<String, dynamic> map) {
     return BookingModel(
-      bookingId: json ['bookingId'] ?? '',
-      customerId: json['customerId'] ?? '',
-      providerId: json['providerId'] ?? '',
-      date: (json['date'] as Timestamp).toDate(),
-      time: json['time'] ?? '',
-      address: json['address'] ?? '',
-      description: json['description'] ?? '',
+      bookingId: map ['bookingId'] ?? '',
+      customerId: map['customerId'] ?? '',
+      providerId: map['providerId'] ?? '',
+      date: (map['date'] as Timestamp).toDate(),
+      time: map['time'] ?? '',
+      address: map['address'] ?? '',
+      description: map['description'] ?? '',
       status: BookingStatus.values.firstWhere(
-            (s) => s.name == json['status'],
+            (s) => s.name == map['status'],
         orElse: () => BookingStatus.pending,
       ),
-      customerName: json['customerName'] ?? '',
-      providerName: json['providerName'] ?? '',
-      serviceName: json['serviceName'] ?? '',
-      createdAt: (json['createdAt'] as Timestamp?)?.toDate(),
+      customerName: map['customerName'] ?? '',
+      providerName: map['providerName'] ?? '',
+      serviceName: map['serviceName'] ?? '',
+      createdAt: (map['createdAt'] as Timestamp?)?.toDate(),
     );
   }
 
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toMap() {
     return {
       'customerId': customerId,
       'providerId': providerId,

@@ -11,7 +11,7 @@ class ProviderModel {
     required this.price,
   });
 
-  Map<String, dynamic> toJson(){
+  Map<String, dynamic> toMap(){
     return {
       'providerId': providerId,
       'userId': userId,
@@ -20,12 +20,12 @@ class ProviderModel {
     };
   }
 
-  factory ProviderModel.fromJson(Map<String, dynamic> json){
+  factory ProviderModel.fromJMap(Map<String, dynamic> map){
     return ProviderModel(
-      providerId: json['providerId'] ?? '',
-      userId: json['userId'] ?? '',
-      serviceId: json['serviceId'] ?? '',
-      price: (json['price'] ?? 0).toDouble(),
+      providerId: map['providerId'] ?? '',
+      userId: map['userId'] ?? '',
+      serviceId: map['serviceId'] ?? '',
+      price: (map['price'] ?? 0).toDouble(),
     );
   }
 }

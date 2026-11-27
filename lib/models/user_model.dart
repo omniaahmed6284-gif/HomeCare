@@ -11,7 +11,7 @@ class UserModel {
   final String? profileImage;
   final DateTime createdAt;
 
-  UserModel({
+  const UserModel({
     required this.userId,
     required this.name,
     required this.email,
@@ -23,7 +23,7 @@ class UserModel {
     required this.createdAt,
   });
 
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toMap() {
     return {
       'userId': userId,
       'name': name,
@@ -37,17 +37,17 @@ class UserModel {
     };
   }
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
+  factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      userId: json['userId'] ?? '',
-      name: json['name'] ?? '',
-      email: json['email'] ?? '',
-      password: json['password'] ?? '',
-      phone: json['phone'] ?? '',
-      address: json['address'],
-      role: json['role'] ?? 'customer',
-      profileImage: json['profileImage'],
-      createdAt: (json['createdAt'] as Timestamp).toDate(),
+      userId: map['userId'] ?? '',
+      name: map['name'] ?? '',
+      email: map['email'] ?? '',
+      password: map['password'] ?? '',
+      phone: map['phone'] ?? '',
+      address: map['address'],
+      role: map['role'] ?? 'customer',
+      profileImage: map['profileImage'],
+      createdAt: (map['createdAt'] as Timestamp).toDate(),
     );
   }
 
