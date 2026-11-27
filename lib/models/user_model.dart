@@ -4,7 +4,6 @@ class UserModel {
   final String userId;
   final String name;
   final String email;
-  final String password;
   final String phone;
   final String? address;
   final String role;
@@ -15,7 +14,6 @@ class UserModel {
     required this.userId,
     required this.name,
     required this.email,
-    required this.password,
     required this.phone,
     this.address,
     required this.role,
@@ -23,32 +21,35 @@ class UserModel {
     required this.createdAt,
   });
 
+
   Map<String, dynamic> toMap() {
     return {
       'userId': userId,
       'name': name,
       'email': email,
-      'password': password,
       'phone': phone,
       'address': address,
       'role': role,
       'profileImage': profileImage,
-      'createdAt': Timestamp.fromDate(createdAt),
+      'createdAt': createdAt,
     };
   }
 
+
   factory UserModel.fromMap(Map<String, dynamic> map) {
+    final createdAtValue = map['createdAt'];
+
     return UserModel(
-      userId: map['userId'] ?? '',
-      name: map['name'] ?? '',
-      email: map['email'] ?? '',
-      password: map['password'] ?? '',
-      phone: map['phone'] ?? '',
-      address: map['address'],
-      role: map['role'] ?? 'customer',
-      profileImage: map['profileImage'],
-      createdAt: (map['createdAt'] as Timestamp).toDate(),
+      userId: map['userId'] as String,
+      name: map['name'] as String,
+      email: map['email'] as String,
+      phone: map['phone'] as String,
+      address: map['address'] as String?,
+      role: map['role'] as String? ?? 'customer',
+      profileImage: map['profileImage'] as String?,
+      createdAt: createdAtValue is Timestamp
+          ? createdAtValue.toDate()
+          : DateTime.parse(createdAtValue as String),
     );
   }
-
 }

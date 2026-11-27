@@ -31,7 +31,6 @@ class AuthService {
         userId: firebaseUser.uid,
         name: name,
         email: email,
-        password: password,
         phone: phone,
         address: address,
         role: role,
